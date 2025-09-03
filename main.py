@@ -1,4 +1,8 @@
-import logging
+# === KEEP ALIVE EN ÜSTTE ===
+from keep_alive import keep_alive
+keep_alive()  # UptimeRobot için HTTP server başlatılıyor
+
+# === TELEGRAM BOT KODLARI ===
 from telegram import (
     Update, 
     InlineKeyboardMarkup, 
@@ -13,9 +17,10 @@ from telegram.ext import (
     filters, 
     CallbackContext
 )
+import logging
 
 # === AYARLAR ===
-BOT_TOKEN = "BURAYA_BOT_TOKENİNİ_YAZ"
+BOT_TOKEN = "8167746118:AAGdr-jeKb8R0ihHpWuUJj2gLKPXBeLdsJ4"
 ZORUNLU_KANALLAR = ["R1704Y", "kfJt32U3Qo1jOWZk"]
 
 logging.basicConfig(
@@ -74,7 +79,7 @@ async def komutlar(update: Update, context: CallbackContext):
     await update.message.reply_text(
         "📌 Komutlar Menüsü\n\n"
         "🔎 /log <site> → Belirtilen siteye ait logları çek.\n"
-        "🧹 /urltemizle → Log dosyalarındaki URL kısmını temizle.\n"
+        "🧹 /urltemizle → Log dosyasındaki URL kısmını temizle.\n"
         "🌐 /proxy_list → Proxy listesi indir.\n"
         "💎 /premium → Premium üyelik hakkında bilgi al."
     )
