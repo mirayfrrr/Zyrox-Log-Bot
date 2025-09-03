@@ -21,7 +21,7 @@ import logging
 
 # === AYARLAR ===
 BOT_TOKEN = "8167746118:AAGdr-jeKb8R0ihHpWuUJj2gLKPXBeLdsJ4"
-ZORUNLU_KANALLAR = ["R1704Y", "kfJt32U3Qo1jOWZk"]
+ZORUNLU_KANALLAR = ["R1704Y"]
 ADMINS = [7854912965]  # admin kullanıcı id’lerini buraya ekle
 
 logging.basicConfig(
@@ -47,14 +47,12 @@ async def start(update: Update, context: CallbackContext):
     user = update.effective_user
     if not await kanallara_abone_mi(user.id, context):
         keyboard = InlineKeyboardMarkup(
-            [[InlineKeyboardButton("📢 Kanal 1", url="https://t.me/R1704Y")],
-             [InlineKeyboardButton("📢 Kanal 2", url="https://t.me/+kfJt32U3Qo1jOWZk")]]
+            [[InlineKeyboardButton("📢 Kanal", url="https://t.me/R1704Y")]]
         )
         await update.message.reply_text(
             "🚫 Erişim Engellendi\n\n"
-            "Botu kullanabilmek için önce aşağıdaki kanallara katılmalısın:\n"
-            "➡️ @R1704Y\n"
-            "➡️ @kfJt32U3Qo1jOWZk\n\n"
+            "Botu kullanabilmek için önce aşağıdaki kanala katılmalısın:\n"
+            "➡️ @R1704Y\n\n"
             "✅ Katıldıktan sonra /start yaz.",
             reply_markup=keyboard
         )
