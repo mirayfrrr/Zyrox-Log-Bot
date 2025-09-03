@@ -22,6 +22,7 @@ import logging
 # === AYARLAR ===
 BOT_TOKEN = "8167746118:AAGdr-jeKb8R0ihHpWuUJj2gLKPXBeLdsJ4"
 ZORUNLU_KANALLAR = ["R1704Y", "kfJt32U3Qo1jOWZk"]
+ADMINS = [7854912965]  # admin kullanıcı id’lerini buraya ekle
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -30,6 +31,8 @@ logging.basicConfig(
 
 # === KANAL KONTROL ===
 async def kanallara_abone_mi(user_id: int, context: CallbackContext) -> bool:
+    if user_id in ADMINS:
+        return True  # adminlere kanal zorunluluğu yok
     for kanal in ZORUNLU_KANALLAR:
         try:
             member = await context.bot.get_chat_member(f"@{kanal}", user_id)
